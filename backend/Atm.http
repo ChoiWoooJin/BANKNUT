@@ -1,0 +1,171 @@
+GET localhost:8080/api/atm/usage?atmNum=1&selectDate=month&referenceDate=2023-09-10
+Content-Type: application/json
+
+
+###
+POST localhost:8080/api/atm/post
+Content-Type: application/json
+
+###
+POST j9c206.p.ssafy.io:8090/api/user/register
+Content-Type: application/json
+
+{
+  "faceId": "",
+  "name": "최우진"
+}
+
+###
+POST localhost:8080/api/user/register
+Content-Type: application/json
+
+{
+  "faceId": "face2",
+  "name": "장태원"
+}
+
+
+###
+POST localhost:8080/suspicious/post?atmNum=2&userId=1
+Content-Type: application/json
+
+{
+  "descriptionVideo": "https://www.youtube.com/embed/3MVIh9Axz4s?si=6qfgLTE9lSt6ts-G",
+  "description": "두명이상인식"
+}
+
+###
+GET localhost:8080/suspicious/list?page=0
+Content-Type: application/json
+
+###
+POST j9c206.p.ssafy.io:8090/api/account/register
+Content-Type: application/json
+
+{
+  "accountNumber": 11113333,
+  "password": 1234,
+  "faceId": ""
+}
+
+###
+POST j9c206.p.ssafy.io:8090/api/account/register
+Content-Type: application/json
+
+{
+  "accountNumber": 11112222,
+  "password": 1234,
+  "faceId": "face2"
+}
+
+###
+POST localhost:8080/deposit?atmId=1
+Content-Type: application/json
+
+{
+  "amount": 5000,
+  "password": 1234,
+  "accountNumber": 11112222
+}
+
+###
+POST localhost:8080/withdraw?atmId=1
+Content-Type: application/json
+
+{
+  "amount": 5000,
+  "password": 1234,
+  "accountNumber": 11111111
+}
+
+###
+POST localhost:8080/transfer?atmId=1
+Content-Type: application/json
+
+{
+  "amount": 1000,
+  "password": 1234,
+  "accountNumber": 11111111,
+  "receiver": 11112222
+}
+
+###
+GET http://localhost:8080/api/atm/all-transactions?atmId=1&page=0
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/atm/all-transactions/type?atmId=1&type=이체&page=0
+Content-Type: application/json
+
+###
+GET http://localhost:8080/suspicious/detail?suspiciousId=1
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/atm/balance-details?atmId=1
+Content-Type: application/json
+
+
+###태빈아 사랑해
+###
+POST http://localhost:8080/api/account/login
+Content-Type: application/json
+
+{
+  "accountNum": 11111111,
+  "password": 1234
+}
+
+###
+GET http://localhost:8080/api/account/balance?accountNum=11111111
+Content-Type: application/json
+
+### 관리자 등록
+POST http://localhost:8080/api/admin/register
+Content-Type: application/json
+
+{
+  "adminId": "rlaxoqls",
+  "password": "1234"
+}
+
+### 관리자 로그인
+POST http://localhost:8080/api/admin/login
+Content-Type: application/json
+
+{
+  "adminId": "rlaxoqls",
+  "password": "1234"
+}
+
+### 통장 정리
+GET http://localhost:8080/transactions/summary?accountNum=11111111
+Content-Type: application/json
+
+
+### uuid
+POST j9c206.p.ssafy.io:8090/api/account/uuid
+Content-Type: application/json
+
+{
+  "accountNum":  11113333,
+  "password": 1234,
+  "name": "최우진"
+}
+
+###
+POST localhost:8080/api/upload-images
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="uuid"
+Content-Type: text/plain
+
+askEDc2
+--WebAppBoundary
+Content-Disposition: form-data; name="images"; filename="user1.jpg"
+Content-Type: image/jpg
+
+< C:\Users\SSAFY\IdeaProjects\S09P22C206\backend\faces\woojin\user1.jpg
+--WebAppBoundary--
+

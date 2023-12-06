@@ -1,0 +1,43 @@
+pipeline {
+    environment {
+        docker_repo = "inss/backend"
+        docker_key = credentials("inss2-docker")
+        docker_image = ''
+    }
+    agent any
+    tools {
+        nodejs "node18"
+    }
+    stages {
+      
+        stage('Build App') {
+            steps {
+                sh '''
+                    pwd
+                    ls -al
+                    cd ./frontend_web
+                    npm install
+                    CI=false npm run build
+                '''
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                    pwd 
+                    cd ./frontend_web
+                    docker build -t ${docker_repo}:front-0.1 .
+                '''
+            }
+        }
+        stage('Deploy React App Image') {
+            steps {
+                sh '''
+                    docker stop frontend_web
+                    docker rm frontend_web
+                    docker run -d --name frontend_web --restart=always -p 3000:3000 --volume /etc/letsencrypt/:/etc/letsencrypt --add-host host.docker.internal:host-gateway ${docker_repo}:front-0.1
+                '''
+            }
+        }
+    }  
+}

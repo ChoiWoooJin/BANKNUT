@@ -1,0 +1,15 @@
+POST http://localhost:8000/upload/
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="user1.jpg"
+Content-Type: image/jpg
+
+< C:\Users\SSAFY\Desktop\woojin\woojin\user1.jpg
+--WebAppBoundary--
+
+###
+POST http://localhost:8000/train/
+Content-Type: application/x-www-form-urlencoded
+
+name=woojin
